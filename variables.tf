@@ -56,6 +56,34 @@ variable "mdfc_subplans" {
   nullable    = false
 }
 
+variable "mdfc-alert-to-emails" {
+  type    = string
+  default = null
+}
+
+variable "mdfc-alert-to-phone" {
+  type    = string
+  default = null
+}
+
+variable "mdfc-alert-to-roles" {
+  type    = list(string)
+  default = []
+  validation {
+    condition     = alltrue([for val in var.mdfc-alert-to-roles : contains(["AccountAdmin", "Contributor", "Owner", "ServiceAdmin"], val)])
+    error_message = "The role must be an array containing any of: 'AccountAdmin', 'Contributor', 'Owner', 'ServiceAdmin'."
+  }
+}
+
+variable "mdfc-alert-minimal-severity" {
+  type    = string
+  default = "High"
+  validation {
+    condition     = contains(["High", "Low", "Medium"], var.mdfc-alert-minimal-severity)
+    error_message = "Severity must be 'High', 'Low', or 'Medium'."
+  }
+}
+
 variable "sec_score_export_rg" {
   description = "The name of the resource group for secure score export"
   type        = string
@@ -64,35 +92,6 @@ variable "sec_score_export_rg" {
 
 variable "export_to_workspace_ID" {
   description = "The workspace ID for secure score export"
-  type        = string
-  default     = null
-}
-
-variable "mdfc-alert-by-email" {
-  type        = bool
-  default     = true
-  description = "(Optional) Enable or disable alert notifications."
-  nullable    = false
-}
-
-variable "mdfc-alert-to-admins" {
-  type        = bool
-  default     = true
-  description = "(Optional) Enable or disable alerts to admins."
-  nullable    = false
-}
-
-variable "mdfc-contact-email" {
-  type        = string
-  default     = null
-}
-
-variable "mdfc-contact-phone" {
-  type        = string
-  default     = null
-}
-
-variable "mdfc-contact-name" {
   type        = string
   default     = null
 }
