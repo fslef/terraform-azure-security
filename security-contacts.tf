@@ -59,6 +59,7 @@ locals {
 
 resource "azapi_resource" "security_contact" {
   type = "Microsoft.Security/securityContacts@2020-01-01-preview"
+  parent_id = "/subscriptions/${data.azurerm_client_config.current.subscription_id}"
   name = "default"
   body = jsonencode({
     properties = local.contact_properties
