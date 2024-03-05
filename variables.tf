@@ -67,32 +67,3 @@ variable "export_to_workspace_ID" {
   type        = string
   default     = null
 }
-
-variable "mdfc-alert-by-email" {
-  type        = bool
-  default     = true
-  description = "(Optional) Enable or disable alert notifications."
-  nullable    = false
-}
-
-variable "mdfc-alert-to-admins" {
-  type        = bool
-  default     = true
-  description = "(Optional) Enable or disable alerts to admins."
-  nullable    = false
-}
-
-variable "mdfc-contact-email" {
-  type        = string
-  default     = null
-}
-
-variable "mdfc-contact-phone" {
-  type        = string
-  default     = null
-}
-
-variable "mdfc-contact-name" {
-  type        = string
-  default     = null
-}
