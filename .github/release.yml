@@ -9,9 +9,9 @@ changelog:
     - title: Features and enhancements
       labels:
         - feature
-        - enhancement
     - title: Fixes
       labels:
+        - bug
         - fix
     - title: Documentation updates
       labels:
