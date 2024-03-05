@@ -58,7 +58,7 @@ locals {
 }
 
 resource "azapi_resource" "security_contact" {
-  type = "Microsoft.Security/securityContacts@2020-01-01"
+  type = "Microsoft.Security/securityContacts@2020-01-01-preview"
   name = "default"
   body = jsonencode({
     properties = local.contact_properties
